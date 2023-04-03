@@ -39,10 +39,13 @@ inputEl.addEventListener('input', () => {
 
 
 buttonEl.addEventListener('click', () => {
-    const seconds = Number(newInput);
+    if (timerEl.innerHTML === '00:00:00') {
+        const seconds = Number(newInput);
 
-    animateTimer(seconds);
+        animateTimer(seconds);
 
 
-    inputEl.value = '';
+        inputEl.value = '';
+    }
+    return
 });

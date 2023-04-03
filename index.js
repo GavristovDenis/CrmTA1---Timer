@@ -9,9 +9,9 @@ const createTimerAnimator = () => {
                 let hours = Math.floor(seconds / 3600)
                 let minutes = Math.floor(seconds / 60)
                 let sec = Math.floor(seconds % 60)
-                hours = hours < 10 ? "0" + hours : hours
-                minutes = minutes < 10 ? "0" + minutes : minutes
-                sec = sec < 10 ? "0" + sec : sec
+                hours = hours < 10 ? '0' + hours : hours
+                minutes = minutes < 10 ? '0' + minutes : minutes
+                sec = sec < 10 ? '0' + sec : sec
                 timerEl.innerHTML = `${hours}:${minutes}:${sec}`;
                 seconds--
             }
@@ -25,16 +25,12 @@ const animateTimer = createTimerAnimator();
 
 inputEl.addEventListener('input', () => {
     const inputText = inputEl.value
-    let inputTextArray = inputText.split('')
-    let inputTextArrayNumbers = inputTextArray.map(Number)
-    let filteredInput = inputTextArrayNumbers.filter(c => typeof c === 'number')
-    let newArray = filteredInput.filter(function (value) {
-        return !Number.isNaN(value);
-    });
-    return newInput = newArray.join('')
-
-
-
+        .split('')
+        .map(Number)
+        .filter(c => typeof c === 'number')
+        .filter(value => { return !Number.isNaN(value) })
+        .join('');
+    return (newInput = inputText);
 });
 
 

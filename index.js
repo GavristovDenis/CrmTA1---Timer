@@ -6,14 +6,15 @@ const createTimerAnimator = () => {
     return (seconds) => {
         setInterval(() => {
             if (seconds >= 0) {
-                let hours = Math.floor(seconds / 3600)
-                let minutes = Math.floor(seconds / 60)
+                let hours = Math.floor(seconds / 60 / 60 % 60)
+                let minutes = Math.floor(seconds / 60 % 60)
                 let sec = Math.floor(seconds % 60)
                 hours = hours < 10 ? '0' + hours : hours
                 minutes = minutes < 10 ? '0' + minutes : minutes
                 sec = sec < 10 ? '0' + sec : sec
                 timerEl.innerHTML = `${hours}:${minutes}:${sec}`;
-                seconds--
+                seconds--;
+
             }
             return
         }, 1000)
@@ -35,13 +36,11 @@ inputEl.addEventListener('input', () => {
 
 
 buttonEl.addEventListener('click', () => {
+    const seconds = Number(newInput);
     if (timerEl.innerHTML === '00:00:00') {
-        const seconds = Number(newInput);
-
         animateTimer(seconds);
-
-
         inputEl.value = '';
     }
     return
+
 });
